@@ -4,7 +4,7 @@ import "leaflet/dist/images/marker-icon.png"
 import "leaflet/dist/images/marker-shadow.png"
 
 
-import 'leaflet/dist/leaflet.css';
+import './leaflet.css';
 import Airtable from 'airtable';
 import './map.css';
 
