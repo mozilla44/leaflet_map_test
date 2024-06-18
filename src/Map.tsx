@@ -43,7 +43,7 @@ const Map: React.FC = () => {
   }, []);
 
   return (
-    <MapContainer  attributionControl={false} center={[18.38, 2.3522]} zoom={2} className='map'>
+    <MapContainer zoomControl= {false}  attributionControl={false} center={[18.38, 2.3522]} zoom={2} className='map'>
       <TileLayer
         /* url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" */
         url="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png'"
