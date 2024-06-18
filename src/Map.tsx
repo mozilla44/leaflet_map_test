@@ -41,9 +41,10 @@ const Map: React.FC = () => {
   }, []);
 
   return (
-    <MapContainer  attributionControl={false} center={[18.38, 2.3522]} zoom={1.5} className='map'>
+    <MapContainer  attributionControl={false} center={[18.38, 2.3522]} zoom={2} className='map'>
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        /* url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" */
+        url="http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png'"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {records.map(record => (
