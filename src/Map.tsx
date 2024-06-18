@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup,} from 'react-leaflet';
 import "leaflet/dist/images/marker-icon.png"
 import "leaflet/dist/images/marker-shadow.png"
-
-
+import './map.css';
 import './leaflet.css';
 import Airtable from 'airtable';
-import './map.css';
 
 interface Record {
   id: string;
