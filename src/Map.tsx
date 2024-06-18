@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup,Icon } from 'react-leaflet';
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+
 import 'leaflet/dist/leaflet.css';
 import Airtable from 'airtable';
 import './map.css';
@@ -48,7 +50,7 @@ const Map: React.FC = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {records.map(record => (
-        <Marker key={record.id} position={[record.fields.latitude, record.fields.longitude]}>
+        <Marker key={record.id} position={[record.fields.latitude, record.fields.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
           <Popup>
             <strong>{record.fields.name}</strong><br />
             {record.fields.description}
