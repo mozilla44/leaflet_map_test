@@ -12,7 +12,6 @@ interface Record {
     name: string;
     latitude: number;
     longitude: number;
-    description: string;
   };
 }
 
@@ -34,9 +33,9 @@ const Map: React.FC = () => {
             name: record.fields.name as string,
             latitude: record.fields.latitude as number,
             longitude: record.fields.longitude as number,
-            description: record.fields.description as string,
           }
         }));
+        console.log(mappedRecords);
         setRecords(mappedRecords);
       }
     });
@@ -53,7 +52,6 @@ const Map: React.FC = () => {
         <Marker key={record.id} position={[record.fields.latitude, record.fields.longitude]}>
           <Popup>
             <strong>{record.fields.name}</strong><br />
-            {record.fields.description}
           </Popup>
         </Marker>
       ))}
