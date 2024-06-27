@@ -3,3 +3,12 @@
     height: 60vh;
     width: 90vw;
 }
+
+.custom-dot div{
+    transition: transform 0.3s ease;
+}
+
+.custom-dot div:hover{
+    transform: scale(3);
+}
+
