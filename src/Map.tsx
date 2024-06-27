@@ -5,6 +5,7 @@ import "leaflet/dist/images/marker-shadow.png"
 import './map.css';
 import './leaflet.css';
 import Airtable from 'airtable';
+import L from 'leaflet';
 
 interface Record {
   id: string;
@@ -14,7 +15,12 @@ interface Record {
     longitude: number;
   };
 }
+const dotIcon = new L.DivIcon({
+  className: 'custom-dot', // Custom class for additional styling
+  html: '<div style="background-color: black; width: 0.4rem; height: 0.4rem; border-radius: 50%;"></div>',
 
+  iconSize: [10, 10] // Size of the dot
+});
 const airtableBase = new Airtable({ apiKey: 'patXZkmsbNWuYNpnX.8b27ebb6670cb7013eb1cffa880b92433bc0ded9ff2225783d34bc9c3085596d' }).base('app3loNcvd921Yy1G');
 
 const Map: React.FC = () => {
@@ -49,11 +55,23 @@ const Map: React.FC = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {records.map(record => (
-        <Marker key={record.id} position={[record.fields.latitude, record.fields.longitude]}>
-          <Popup>
-            <strong>{record.fields.name}</strong><br />
-          </Popup>
-        </Marker>
+           <Marker 
+           key={record.id} 
+           position={[record.fields.latitude, record.fields.longitude]} 
+           icon={dotIcon}
+           eventHandlers={{
+             mouseover: (e) => {
+               e.target.openPopup();
+             },
+             mouseout: (e) => {
+               e.target.closePopup();
+             },
+           }}
+         >
+           <Popup>
+             <strong>{record.fields.name}</strong><br />
+           </Popup>
+         </Marker>
       ))}
     </MapContainer>
   );
